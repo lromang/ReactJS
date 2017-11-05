@@ -5,6 +5,10 @@ import './index.css';
 class Square extends React.Component {
   // props contains the arguments of the object
   render() {
+    /*
+     * - W
+     * - We obtain the value from the props (arguments passed)
+     */
     return (
         <button className="square" onClick={()=>{this.props.onClick()}}>
               {this.props.value}
@@ -29,6 +33,10 @@ class Board extends React.Component {
   }
 
   renderSquare(i) {
+    /*
+     * - The value of each rendered square equals the value of the array.
+     * - We are passing the handleClick to the onClick function in square.
+     */
     return <Square value={this.state.squares[i]} onClick={()=>this.handleClick(i)} />;
   }
 
