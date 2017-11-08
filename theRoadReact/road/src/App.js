@@ -22,6 +22,7 @@ class App extends Component {
 
     this.state = {
       list: list,
+      queried: null,
     };
 
     this.onDismiss = this.onDismiss.bind(this);
@@ -29,13 +30,17 @@ class App extends Component {
   }
 
   onDismiss(ObjectID) {
-    this.setState({list: this.state.list.filter(item => {return item.ObjectID !== ObjectID ? item : null})})
+    this.setState({list: this.state.list.filter(item => item.ObjectID !== ObjectID ? item : null)})
   }
 
+
   render() {
-    let hello = 'Welcome to the road to learn react!';
     return (
-      <div className="App">
+        <div className="App">
+        <form>
+        <input id='queried' type='text'/>
+        <button className=".btn-primary" onClick={()=>alert(document.getElementById('queried').value)}></button>
+        </form>
         {this.state.list.map(item => {
           return <div key={item.ObjectID}>
             <span>
@@ -49,7 +54,7 @@ class App extends Component {
             <span>
             {item.num_comments}
           </span>
-            <button type="button" onClick={() => this.onDismiss(item.ObjectID)}>
+            <button className="button" onClick={() => this.onDismiss(item.ObjectID)}>
             Dismiss
             </button>
           </div>;
