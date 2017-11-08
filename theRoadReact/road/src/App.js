@@ -17,11 +17,19 @@ const list = [
 ]
 
 class App extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      list: list,
+    };
+  }
+
   render() {
     let hello = 'Welcome to the road to learn react!';
     return (
       <div className="App">
-        {list.map(item => {
+        {this.state.list.map(item => {
           return <div key={item.ObjectID}>
             <span>
             <a href={item.url}>
