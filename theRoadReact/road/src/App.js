@@ -36,9 +36,8 @@ class App extends Component {
   }
 
 
-  lookUp(itemName) {
-    this.setState({queried : itemName})
-    this.setState({list: this.state.list.filter(item => item.author === itemName ? item : null)})
+  lookUp(event) {
+    this.setState({queried : event.target.value})
   }
 
 
@@ -47,10 +46,9 @@ class App extends Component {
     return (
         <div className="App">
         <form>
-        <input id='queried' type='text'/>
-        <button className=".btn-primary" onClick={() => this.lookUp(document.getElementById('queried').value)}></button>
+        <input id='queried' type='text' onChange={this.lookUp}/>
         </form>
-        {this.state.list.map(item => {
+        {this.state.list.filter(item => item.author === this.queried ? item : null).map(item => {
           return <div key={item.ObjectID}>
             <span>
             <a href={item.url}>
