@@ -37,7 +37,8 @@ class App extends Component {
 
 
   lookUp(itemName) {
-    this.setState({list : this.state.list.filter(item  => item.author === itemName ? item : null)})
+    this.setState({queried : itemName})
+    this.setState({list: this.state.list.filter(item => item.author === itemName ? item : null)})
   }
 
 
