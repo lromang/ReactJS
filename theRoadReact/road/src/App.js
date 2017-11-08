@@ -27,6 +27,8 @@ class App extends Component {
 
     this.onDismiss = this.onDismiss.bind(this);
 
+    this.lookUp    = this.lookUp.bind(this);
+
   }
 
   onDismiss(ObjectID) {
@@ -34,12 +36,18 @@ class App extends Component {
   }
 
 
+  lookup(itemName) {
+    this.setState({list : this.state.list.filter(item  => item.author === itemName ? item : null)})
+  }
+
+
+
   render() {
     return (
         <div className="App">
         <form>
         <input id='queried' type='text'/>
-        <button className=".btn-primary" onClick={()=>alert(document.getElementById('queried').value)}></button>
+        <button className=".btn-primary" onClick={() => this.lookUp(document.getElementById('queried').value)}></button>
         </form>
         {this.state.list.map(item => {
           return <div key={item.ObjectID}>
