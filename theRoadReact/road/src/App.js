@@ -29,7 +29,7 @@ class App extends Component {
   }
 
   onDismiss(ObjectID) {
-    this.set.state((this.state.list, props) => {this.state.list.filter(item => {return item.ObjectID !== ObjectID ? item : null}})
+    this.setState({list: this.state.list.filter(item => {return item.ObjectID !== ObjectID ? item : null})})
   }
 
   render() {
